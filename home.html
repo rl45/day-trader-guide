@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day Trading Mastery — The Complete Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=JetBrains+Mono:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --surface: #111419;
+    --surface-2: #181c24;
+    --border: #1e2430;
+    --border-accent: #2a3142;
+    --text: #e4e8f0;
+    --text-muted: #7a8394;
+    --green: #00e68a;
+    --green-dim: #00c974;
+    --green-glow: rgba(0,230,138,0.15);
+    --red: #ff4d6a;
+    --red-glow: rgba(255,77,106,0.15);
+    --amber: #ffb84d;
+    --amber-glow: rgba(255,184,77,0.12);
+    --blue: #4dabff;
+    --blue-glow: rgba(77,171,255,0.12);
+    --cyan: #00d4ff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-accent); border-radius: 3px; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 60% 40% at 50% 45%, rgba(0,230,138,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(77,171,255,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 30% at 80% 20%, rgba(255,77,106,0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.25;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: '// '; opacity: 0.5; }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero h1 span { color: var(--green); }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 580px;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--green);
+  }
+  .hero-stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-top: 0.25rem;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .scroll-cue .arrow {
+    width: 1px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--text-muted), transparent);
+    animation: pulse 2s ease infinite;
+  }
+
+  /* NAV */
+  .toc {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,12,16,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 2rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    gap: 0.25rem;
+    justify-content: center;
+  }
+  .toc a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 0.5rem 0.85rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    color: var(--green);
+    background: var(--green-glow);
+  }
+
+  /* SECTIONS */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 5rem 0;
+    position: relative;
+  }
+
+  section + section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(80%, 800px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--green);
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 650px;
+    margin-bottom: 3rem;
+  }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 12px 12px 0 0;
+  }
+  .card.green::after { background: var(--green); }
+  .card.red::after { background: var(--red); }
+  .card.amber::after { background: var(--amber); }
+  .card.blue::after { background: var(--blue); }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+  }
+  .card.green .card-icon { background: var(--green-glow); color: var(--green); }
+  .card.red .card-icon { background: var(--red-glow); color: var(--red); }
+  .card.amber .card-icon { background: var(--amber-glow); color: var(--amber); }
+  .card.blue .card-icon { background: var(--blue-glow); color: var(--blue); }
+
+  .card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  /* STRATEGY TABLE */
+  .strategy-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.9rem;
+  }
+  .strategy-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 1rem 1.25rem;
+    text-align: left;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .strategy-table td {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .strategy-table tr:last-child td { border-bottom: none; }
+  .strategy-table tr:hover td { background: rgba(255,255,255,0.015); }
+  
+  .tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+  .tag-green { background: var(--green-glow); color: var(--green); }
+  .tag-amber { background: var(--amber-glow); color: var(--amber); }
+  .tag-red { background: var(--red-glow); color: var(--red); }
+  .tag-blue { background: var(--blue-glow); color: var(--blue); }
+
+  /* RULES */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+  .rule {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .rule:hover { border-color: var(--border-accent); }
+  .rule-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--green);
+    background: var(--green-glow);
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rule h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .rule p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* MINDSET SECTION */
+  .mindset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .mindset-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+  }
+  .mindset-card .emoji {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .mindset-card h3 {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+  }
+  .mindset-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* DO/DON'T */
+  .do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .do-col, .dont-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .do-col { border-top: 3px solid var(--green); }
+  .dont-col { border-top: 3px solid var(--red); }
+  .do-col h3, .dont-col h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .do-col h3 { color: var(--green); }
+  .dont-col h3 { color: var(--red); }
+  .do-col li, .dont-col li {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0;
+    list-style: none;
+    display: flex;
+    gap: 0.65rem;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .do-col li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .dont-col li::before {
+    content: '✗';
+    color: var(--red);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* TERMINAL BLOCK */
+  .terminal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+  }
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .terminal-bar span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+  }
+  .terminal-body {
+    padding: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    line-height: 2;
+    color: var(--text-muted);
+  }
+  .terminal-body .g { color: var(--green); }
+  .terminal-body .r { color: var(--red); }
+  .terminal-body .a { color: var(--amber); }
+  .terminal-body .b { color: var(--blue); }
+  .terminal-body .w { color: var(--text); }
+
+  /* GLOSSARY */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.75rem;
+  }
+  .glossary-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+  }
+  .glossary-item dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--cyan);
+    margin-bottom: 0.3rem;
+  }
+  .glossary-item dd {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+  footer span { color: var(--red); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .do-dont { grid-template-columns: 1fr; }
+    .toc { justify-content: flex-start; }
+    .strategy-table { font-size: 0.78rem; }
+    .strategy-table th, .strategy-table td { padding: 0.75rem 0.85rem; }
+    section { padding: 3.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-tag">The Complete Blueprint</div>
+  <h1>Day Trading<br><span>Mastery</span></h1>
+  <p class="hero-sub">Everything you need to know — from market mechanics and proven strategies to risk management and the psychology that separates winners from the 90% who fail.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">90%</div>
+      <div class="hero-stat-label">Traders Lose Money</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">$25K</div>
+      <div class="hero-stat-label">PDT Minimum (US)</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">1-2%</div>
+      <div class="hero-stat-label">Max Risk Per Trade</div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <div class="arrow"></div>
+    scroll to begin
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="toc">
+  <a href="#fundamentals">Fundamentals</a>
+  <a href="#tools">Tools & Setup</a>
+  <a href="#strategies">Strategies</a>
+  <a href="#risk">Risk Management</a>
+  <a href="#routine">Daily Routine</a>
+  <a href="#psychology">Psychology</a>
+  <a href="#dodont">Do's & Don'ts</a>
+  <a href="#glossary">Glossary</a>
+</nav>
+
+<!-- FUNDAMENTALS -->
+<section id="fundamentals">
+  <div class="container reveal">
+    <div class="section-label">01 — Fundamentals</div>
+    <h2 class="section-title">Understanding the Arena</h2>
+    <p class="section-desc">Day trading means opening and closing positions within the same trading day. You profit from short-term price movements — not long-term value. Here's the foundation.</p>
+    
+    <div class="card-grid">
+      <div class="card green">
+        <div class="card-icon">📊</div>
+        <h3>What Day Traders Actually Do</h3>
+        <p>You buy and sell financial instruments — stocks, options, futures, forex, or crypto — within a single session. Positions are never held overnight, eliminating gap risk but requiring intense focus during market hours.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-icon">🏛️</div>
+        <h3>Markets & Hours</h3>
+        <p><strong>US Equities:</strong> 9:30 AM – 4:00 PM ET. Pre-market 4 AM, after-hours until 8 PM. <strong>Forex:</strong> 24/5, best during London/NY overlap (8–12 ET). <strong>Futures:</strong> Nearly 24/5. <strong>Crypto:</strong> 24/7.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-icon">⚖️</div>
+        <h3>Pattern Day Trader Rule (PDT)</h3>
+        <p>In the US, if you make 4+ day trades in 5 business days using a margin account, you need $25,000 minimum equity. Alternatives: trade futures, use a cash account (T+1 settlement), or use an offshore broker.</p>
+      </div>
+      <div class="card red">
+        <div class="card-icon">💰</div>
+        <h3>Capital Requirements</h3>
+        <p>Realistic starting capital: $5K–$30K for stocks, $500–$5K for futures/forex. Never trade money you can't afford to lose. Undercapitalization is the #1 reason new traders blow up — it forces overleveraging.</p>
+      </div>
+      <div class="card green">
+        <div class="card-icon">📈</div>
+        <h3>How You Make (and Lose) Money</h3>
+        <p><strong>Long:</strong> Buy low, sell higher. <strong>Short:</strong> Sell borrowed shares high, buy back lower. Your edge = (win rate × avg win) – (loss rate × avg loss). Even a 40% win rate is profitable if your winners are 2× your losers.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-icon">🔑</div>
+        <h3>Key Instruments</h3>
+        <p><strong>Stocks:</strong> Most popular, straightforward. <strong>Options:</strong> Leverage + defined risk, complex. <strong>Futures:</strong> No PDT, tax advantages (60/40 rule), high leverage. <strong>Forex:</strong> High liquidity, low capital needed. Choose one to master first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS & SETUP -->
+<section id="tools">
+  <div class="container reveal">
+    <div class="section-label">02 — Tools & Setup</div>
+    <h2 class="section-title">Your Trading Workstation</h2>
+    <p class="section-desc">Professional tools are non-negotiable. Here's the minimum stack for serious day trading.</p>
+    
+    <div class="card-grid">
+      <div class="card green">
+        <div class="card-icon">🖥️</div>
+        <h3>Broker & Platform</h3>
+        <p>Choose a direct-access broker with fast execution, Level 2 data, and hotkeys. Popular: Interactive Brokers, Lightspeed, Cobra Trading, TradeStation. Avoid: commission-free brokers with slow fills for active scalping.</p>
+      </div>
+      <div class="card amber">
+        <div class="card-icon">📉</div>
+        <h3>Charting Software</h3>
+        <p>TradingView (beginner-friendly, web-based), ThinkorSwim (free with TD Schwab), DAS Trader (professional-grade), or Sierra Chart (futures). Learn to read candlestick charts, set up indicators, and draw key levels.</p>
+      </div>
+      <div class="card blue">
+        <div class="card-icon">📡</div>
+        <h3>Scanners & News</h3>
+        <p>Real-time scanners find stocks in play. Trade Ideas, Finviz, or built-in broker scanners. Filter by: volume surge, % gainers/losers, float, relative volume. News: Benzinga Pro, Bloomberg terminal, or X/Twitter for speed.</p>
+      </div>
+      <div class="card red">
+        <div class="card-icon">📓</div>
+        <h3>Trade Journal</h3>
+        <p>Non-negotiable. Log every trade: entry, exit, size, setup, emotion, and screenshot. Tools: Tradervue, TraderSync, Edgewonk, or a spreadsheet. Review weekly. This is how you find your edge — and fix leaks.</p>
+      </div>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dot" style="background:#ff5f57"></div>
+        <div class="terminal-dot" style="background:#febc2e"></div>
+        <div class="terminal-dot" style="background:#28c840"></div>
+        <span>minimum-hardware.cfg</span>
+      </div>
+      <div class="terminal-body">
+        <span class="g">hardware:</span><br>
+        &nbsp;&nbsp;<span class="w">monitor</span> &nbsp;&nbsp;&nbsp;= <span class="a">"2+ screens (one for charts, one for scanner/execution)"</span><br>
+        &nbsp;&nbsp;<span class="w">internet</span> &nbsp;&nbsp;= <span class="a">"wired connection, 50+ Mbps, low latency"</span><br>
+        &nbsp;&nbsp;<span class="w">computer</span> &nbsp;&nbsp;= <span class="a">"modern CPU, 16GB+ RAM, SSD"</span><br>
+        &nbsp;&nbsp;<span class="w">backup</span> &nbsp;&nbsp;&nbsp;&nbsp;= <span class="a">"mobile hotspot + phone broker app"</span><br>
+        <br>
+        <span class="g">accounts:</span><br>
+        &nbsp;&nbsp;<span class="w">broker</span> &nbsp;&nbsp;&nbsp;&nbsp;= <span class="a">"margin account, direct market access"</span><br>
+        &nbsp;&nbsp;<span class="w">data_feed</span> &nbsp;= <span class="a">"Level 2 / market depth subscription"</span><br>
+        &nbsp;&nbsp;<span class="w">sim_account</span>= <span class="a">"paper trade for 2-3 months minimum before going live"</span><br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIES -->
+<section id="strategies">
+  <div class="container reveal">
+    <div class="section-label">03 — Strategies</div>
+    <h2 class="section-title">Proven Setups That Work</h2>
+    <p class="section-desc">Master one strategy before adding another. Each has different win rates, risk profiles, and personality fits.</p>
+    
+    <div style="overflow-x:auto; border-radius:12px;">
+    <table class="strategy-table">
+      <thead>
+        <tr>
+          <th>Strategy</th>
+          <th>Timeframe</th>
+          <th>How It Works</th>
+          <th>Difficulty</th>
+          <th>Best For</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Momentum / Breakout</strong></td>
+          <td>1–5 min</td>
+          <td>Enter when price breaks a key level with high volume. Ride the trend with a trailing stop. Look for volume confirmation 2–3× average.</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Beginners</td>
+        </tr>
+        <tr>
+          <td><strong>VWAP Reclaim</strong></td>
+          <td>1–15 min</td>
+          <td>Buy when price dips below VWAP and reclaims it with volume. VWAP acts as a magnet — institutions trade around it. Target next resistance.</td>
+          <td><span class="tag tag-green">Easy</span></td>
+          <td>All levels</td>
+        </tr>
+        <tr>
+          <td><strong>Opening Range Breakout</strong></td>
+          <td>5–15 min</td>
+          <td>Mark the first 5–15 min high and low. Enter the breakout direction. Works best when range is narrow relative to the stock's ATR.</td>
+          <td><span class="tag tag-green">Easy</span></td>
+          <td>Beginners</td>
+        </tr>
+        <tr>
+          <td><strong>Scalping</strong></td>
+          <td>Seconds–2 min</td>
+          <td>Rapid-fire trades capturing tiny moves ($0.05–$0.20). Requires Level 2, hotkeys, and a fast broker. High win rate, small gains.</td>
+          <td><span class="tag tag-red">Hard</span></td>
+          <td>Experienced</td>
+        </tr>
+        <tr>
+          <td><strong>Pullback / Flag</strong></td>
+          <td>5–30 min</td>
+          <td>After a strong move, wait for a low-volume consolidation (flag). Enter the continuation. Best on high-relative-volume stocks.</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>Intermediate</td>
+        </tr>
+        <tr>
+          <td><strong>Mean Reversion / Fade</strong></td>
+          <td>1–15 min</td>
+          <td>Short overextended moves (e.g., 3+ red/green candles from VWAP with exhaustion volume). Counter-trend — higher risk, higher reward.</td>
+          <td><span class="tag tag-red">Hard</span></td>
+          <td>Experienced</td>
+        </tr>
+        <tr>
+          <td><strong>Gap & Go</strong></td>
+          <td>First 30 min</td>
+          <td>Trade stocks that gap up/down on news or earnings. Enter if the gap holds on the first pullback. Volume and catalyst are key.</td>
+          <td><span class="tag tag-amber">Medium</span></td>
+          <td>All levels</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- RISK MANAGEMENT -->
+<section id="risk">
+  <div class="container reveal">
+    <div class="section-label">04 — Risk Management</div>
+    <h2 class="section-title">Survive First, Profit Second</h2>
+    <p class="section-desc">Risk management isn't optional — it's the entire game. Every professional trader will tell you: capital preservation is priority #1.</p>
+    
+    <div class="rules-grid">
+      <div class="rule">
+        <div class="rule-num">01</div>
+        <div>
+          <h4>The 1% Rule</h4>
+          <p>Never risk more than 1–2% of your total account on a single trade. On a $25K account, that's $250–$500 max loss per trade. This ensures no single trade kills you.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">02</div>
+        <div>
+          <h4>Always Use Stop Losses</h4>
+          <p>"I'll get out when it feels right" = blown account. Set your stop BEFORE entering. Base it on technical levels (support, VWAP) — not an arbitrary dollar amount.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">03</div>
+        <div>
+          <h4>Risk/Reward Ratio ≥ 2:1</h4>
+          <p>Only take trades where your potential profit is at least 2× your risk. Risking $100 to make $200. This means you're profitable even with a 40% win rate.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">04</div>
+        <div>
+          <h4>Daily Loss Limit</h4>
+          <p>Set a hard daily max loss (e.g., 3–5% of your account). Hit it? Walk away. No exceptions. Revenge trading after losses is the fastest way to blow up.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">05</div>
+        <div>
+          <h4>Position Sizing Formula</h4>
+          <p><strong>Shares = (Account Risk $) ÷ (Entry Price – Stop Price)</strong>. Example: $250 risk ÷ $0.50 stop distance = 500 shares. Size to the stop, never the other way around.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">06</div>
+        <div>
+          <h4>Scale In, Scale Out</h4>
+          <p>Don't enter full size at once. Take ⅓ at entry, add if it confirms. Take partial profits at 1R, let the rest run. This smooths your equity curve and locks in gains.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">07</div>
+        <div>
+          <h4>Correlation Risk</h4>
+          <p>Three long positions in tech stocks is one big trade, not three. Watch correlated positions. If SPY drops, all your longs drop together. Diversify exposure or size down.</p>
+        </div>
+      </div>
+      <div class="rule">
+        <div class="rule-num">08</div>
+        <div>
+          <h4>Max Drawdown Rule</h4>
+          <p>If your account drops 10–15% from peak, stop live trading. Go back to simulation. Reevaluate your strategy. Something is broken — don't keep feeding the problem money.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY ROUTINE -->
+<section id="routine">
+  <div class="container reveal">
+    <div class="section-label">05 — Daily Routine</div>
+    <h2 class="section-title">A Pro Trader's Day</h2>
+    <p class="section-desc">Consistent routine creates consistent results. Here's what a structured trading day looks like.</p>
+    
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="terminal-dot" style="background:#ff5f57"></div>
+        <div class="terminal-dot" style="background:#febc2e"></div>
+        <div class="terminal-dot" style="background:#28c840"></div>
+        <span>daily-routine.sh</span>
+      </div>
+      <div class="terminal-body">
+        <span class="b">// PRE-MARKET — 7:00–9:25 AM ET</span><br>
+        <span class="g">→</span> <span class="w">Check overnight futures</span> (ES, NQ) for market direction<br>
+        <span class="g">→</span> <span class="w">Scan for gappers</span> — stocks up/down 4%+ with high pre-market volume<br>
+        <span class="g">→</span> <span class="w">Read economic calendar</span> (FOMC, CPI, jobs report = volatility)<br>
+        <span class="g">→</span> <span class="w">Build a watchlist</span> of 3–5 stocks. Mark key levels on charts<br>
+        <span class="g">→</span> <span class="w">Check news</span> for catalysts: earnings, FDA, upgrades, sector momentum<br>
+        <span class="g">→</span> <span class="w">Set alerts</span> on key price levels. Plan entries BEFORE the bell<br>
+        <br>
+        <span class="b">// MARKET OPEN — 9:30–11:30 AM ET (PRIME TIME)</span><br>
+        <span class="a">→</span> <span class="w">First 15 min:</span> observe, let opening range form. Don't chase<br>
+        <span class="a">→</span> <span class="w">9:45–10:30 AM:</span> best setups happen here. Execute your plan<br>
+        <span class="a">→</span> <span class="w">Follow your rules.</span> No improvising. Trade your setups only<br>
+        <span class="a">→</span> <span class="w">Take partials</span> at targets. Move stops to breakeven<br>
+        <br>
+        <span class="b">// MIDDAY — 11:30 AM – 2:00 PM ET (CHOP ZONE)</span><br>
+        <span class="r">→</span> <span class="w">Volume dries up.</span> Spreads widen. Most setups fail here<br>
+        <span class="r">→</span> <span class="w">Best move:</span> step away. Eat lunch. Exercise. Review morning trades<br>
+        <span class="r">→</span> <span class="w">Exception:</span> if a strong catalyst drives volume, trade it<br>
+        <br>
+        <span class="b">// POWER HOUR — 3:00–4:00 PM ET</span><br>
+        <span class="a">→</span> <span class="w">Volume returns.</span> Institutions close or open positions<br>
+        <span class="a">→</span> <span class="w">Good for momentum</span> and breakout trades<br>
+        <span class="a">→</span> <span class="w">Close all positions</span> before 4:00 PM (unless swing trading)<br>
+        <br>
+        <span class="b">// POST-MARKET — 4:00+ PM ET</span><br>
+        <span class="g">→</span> <span class="w">Journal every trade.</span> What went right? What broke your rules?<br>
+        <span class="g">→</span> <span class="w">Update P&L tracker.</span> Calculate daily stats<br>
+        <span class="g">→</span> <span class="w">Prepare for tomorrow.</span> Scan after-hours earnings for gaps<br>
+        <span class="g">→</span> <span class="w">Disconnect.</span> Don't stare at charts 24/7. Recovery matters<br>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PSYCHOLOGY -->
+<section id="psychology">
+  <div class="container reveal">
+    <div class="section-label">06 — Psychology</div>
+    <h2 class="section-title">Master Your Mind</h2>
+    <p class="section-desc">Technical skill gets you to breakeven. Psychological mastery is what makes you profitable. Trading is 80% mental.</p>
+
+    <div class="mindset-grid">
+      <div class="mindset-card">
+        <div class="emoji">😨</div>
+        <h3>Fear of Missing Out (FOMO)</h3>
+        <p>The stock rockets 30% and you chase it at the top. FOMO makes you enter without a plan, pay too much, and hold too long. Cure: there's always another trade. Missed it? Move on. Write it in your journal, not your brokerage.</p>
+      </div>
+      <div class="mindset-card">
+        <div class="emoji">🔥</div>
+        <h3>Revenge Trading</h3>
+        <p>You take a loss and immediately re-enter bigger to "make it back." This emotional spiral is the #1 account killer. Cure: after 2 consecutive losses, take a 30-minute break. Your daily loss limit is your guardrail.</p>
+      </div>
+      <div class="mindset-card">
+        <div class="emoji">🎰</div>
+        <h3>Overconfidence After Wins</h3>
+        <p>A winning streak makes you feel invincible. You size up recklessly and ignore your rules. Then one trade wipes a week of gains. Cure: treat every trade identically. Process over outcome. Stick to your position sizing.</p>
+      </div>
+      <div class="mindset-card">
+        <div class="emoji">🧊</div>
+        <h3>Develop Emotional Detachment</h3>
+        <p>The best traders feel nothing on a win or a loss. Money is just a scorecard. Think in terms of "R" (risk units) not dollars. "I made 3R today" — not "I made $750." This decouples emotion from execution.</p>
+      </div>
+      <div class="mindset-card">
+        <div class="emoji">📐</div>
+        <h3>Think in Probabilities</h3>
+        <p>Any single trade is meaningless. Your edge plays out over 100+ trades. A 55% win rate with 2:1 R/R is wildly profitable — but you'll still have 5-trade losing streaks. That's statistics, not failure. Trust the process.</p>
+      </div>
+      <div class="mindset-card">
+        <div class="emoji">🧘</div>
+        <h3>Protect Your State</h3>
+        <p>Bad sleep, stress, arguments, illness — they all destroy decision-making. Don't trade when you're compromised. Professional athletes don't play injured. Neither should you. Physical health = trading health.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DO'S AND DON'TS -->
+<section id="dodont">
+  <div class="container reveal">
+    <div class="section-label">07 — Rules to Live By</div>
+    <h2 class="section-title">Do's & Don'ts</h2>
+    <p class="section-desc">Hard-won lessons from professional traders. Pin this to your wall.</p>
+
+    <div class="do-dont">
+      <div class="do-col">
+        <h3>✦ Do This</h3>
+        <ul>
+          <li>Paper trade for 2–3 months before risking real money</li>
+          <li>Start with one strategy and one market</li>
+          <li>Journal every single trade with screenshots</li>
+          <li>Set a daily loss limit and honor it religiously</li>
+          <li>Trade the first 2 hours — that's where the money is</li>
+          <li>Size positions based on your stop distance</li>
+          <li>Take partial profits and let runners ride</li>
+          <li>Review your journal weekly to find patterns</li>
+          <li>Trade with the trend on higher timeframes</li>
+          <li>Treat it like a business — track every dollar</li>
+          <li>Take days off. Recovery prevents burnout</li>
+          <li>Accept losses as the cost of doing business</li>
+        </ul>
+      </div>
+      <div class="dont-col">
+        <h3>✦ Don't Do This</h3>
+        <ul>
+          <li>Trade with money you can't afford to lose</li>
+          <li>Average down on a losing day trade — ever</li>
+          <li>Hold losers overnight hoping they'll recover</li>
+          <li>Follow "gurus" selling $5K courses with cherry-picked results</li>
+          <li>Trade every day — no setup = no trade</li>
+          <li>Risk more than 1–2% on any single position</li>
+          <li>Chase a stock after it already moved 20%+</li>
+          <li>Trade during lunch hour chop (11:30–2:00)</li>
+          <li>Increase size after losses to "make it back"</li>
+          <li>Trade without a clear, written plan for each position</li>
+          <li>Ignore the overall market direction (SPY/QQQ)</li>
+          <li>Compare yourself to others — focus on your own curve</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="glossary">
+  <div class="container reveal">
+    <div class="section-label">08 — Glossary</div>
+    <h2 class="section-title">Key Terms</h2>
+    <p class="section-desc">The language of day trading. Know these inside and out.</p>
+    
+    <div class="glossary-grid">
+      <div class="glossary-item">
+        <dt>Bid / Ask</dt>
+        <dd>Bid = highest buyer price. Ask = lowest seller price. The gap is the "spread" — your hidden cost on every trade.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>VWAP</dt>
+        <dd>Volume-Weighted Average Price. The "fair value" line. Above VWAP = bullish bias. Below = bearish. Institutional benchmark.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Level 2 / Book</dt>
+        <dd>Shows all pending buy/sell orders at each price level. Reveals supply & demand zones and large players.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Float</dt>
+        <dd>Shares available for public trading. Low float (&lt;10M shares) = more volatile, bigger moves, harder to trade.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Relative Volume (RVOL)</dt>
+        <dd>Today's volume vs. average. RVOL &gt; 2× means unusual interest — these are the stocks in play.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Support / Resistance</dt>
+        <dd>Price levels where buying (support) or selling (resistance) historically occurs. Key for entries, exits, and stops.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>ATR</dt>
+        <dd>Average True Range. Measures a stock's typical daily range. Use it to set realistic profit targets and stop losses.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Slippage</dt>
+        <dd>Difference between expected price and actual fill price. Worse in low-volume stocks. Use limit orders to control it.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Short Selling</dt>
+        <dd>Borrowing shares to sell high, then buying back lower. Profit from price drops. Risk: unlimited if it goes against you.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Margin</dt>
+        <dd>Borrowed money from your broker. 4:1 intraday leverage for stocks. Amplifies gains AND losses equally.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>Gap Up / Gap Down</dt>
+        <dd>When a stock opens significantly higher or lower than yesterday's close, usually on news or earnings.</dd>
+      </div>
+      <div class="glossary-item">
+        <dt>R-Multiple</dt>
+        <dd>Profit measured in risk units. If you risked $100 and made $250, that's a 2.5R trade. Think in R, not dollars.</dd>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>This is an educational reference, not financial advice. Trading involves substantial risk of loss.<br>
+  Past performance does not guarantee future results. <span>Trade responsibly.</span></p>
+</footer>
+
+<script>
+  // Intersection Observer for scroll reveals
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
